@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <style>
+  </style>
+</head>
+
+<body>
+<div class="chat-app">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="info-user row">
+        <div class="avatar col-sm-2">
+          <img class="img-fluid round rounded" src="../public/images/girl.jpg" alt="avatar">
+        </div>
+        <div class="info-detail col-sm-8 small">
+          <div class="link">
+            {{userLogin.username}}
+          </div>
+          <div>
+            <span class="link">Slogan</span>
+            <span class="emotion hvr-bounce-in"><i class="far fa-smile"></i></span>
+          </div>
+        </div>
+        <div class="setting-area col-sm-2 icon">
+          <i class='fas fa-ellipsis-h'></i>
+        </div>
+      </div>
+      <div class="box-search-channel">
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text hvr-grow icon"> <i class="fas fa-search"></i></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Pepole, groups & messages">
+        </div>
+      </div>
+      <div class="menu-search-item text-center row">
+        <div class="col-sm-3">
+          <div class="symbol-link  hvr-pulse hvr-grow-shadow">
+            <i class="fab fa-rocketchat"></i>
+          </div>
+          <div class="title-item">
+            Chat
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="symbol-link  hvr-pulse hvr-grow-shadow">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="title-item">
+            Call
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="symbol-link  hvr-pulse hvr-grow-shadow">
+            <i class="fas fa-address-card"></i>
+          </div>
+          <div class="title-item">
+            Contacts
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="symbol-link  hvr-pulse hvr-grow-shadow">
+            <i class="fas fa-bell"></i>
+          </div>
+          <div class="title-item">
+            Notifications
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="header-by-item row">
+        <div class="title col-sm-8 small">
+          RECENT CHATS
+          <span class="fas fa-angle-down icon"></span>
+        </div>
+        <div class="add-button-chat col-sm-4">
+          <button class="btn btn-light btn-sm"><i class="	fas fa-plus"></i> Chat</button>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-content">
+      <!-- content box by items -->
+      <div class="list-channel small">
+        <div class="info-channel row" *ngFor="let channel of listChannel" (click)="selectChannel(channel)">
+          <div class="avatar col-sm-2">
+            <img class="img-fluid round rounded" src="../public/images/girl.jpg" alt="avatar channel">
+          </div>
+          <div class="extra-info col-sm-8">
+            <div class="title-channel">{{channel.title}}</div>
+            <div class="latest-message">ABC</div>
+          </div>
+          <div class="latest-time-access col-sm-2 small">Wed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="header-channel p-3">
+        <span class="info-channel float-left">
+          <div class="title-channel">
+            <h3 class="link">{{selectedChannel.title}}</h3>
+          </div>
+          <div class="attached-info-channel row small font-weight-bold">
+            <div class="extra-info-channel mx-2">
+              <span class="symbol-link m-1"><i class="fas fa-circle"></i></span>
+              <span class="link">Last seen 26m ago</span>
+            </div>
+            <span class="icon-line mr-2">|</span>
+            <div class="extra-info-channel mr-2">
+              <span class="symbol-link m-1"><i class="fas fa-book"></i></span>
+              <span class="link">Gallery</span>
+            </div>
+            <span class="icon-line mr-2">|</span>
+            <div class="extra-info-channel mr-2">
+              <span class="symbol-link m-1"><i class="	fas fa-search"></i></span>
+              <span class="link">Find</span>
+            </div>
+          </div>
+        </span>
+      <span class="feature-support float-right">
+          <span class="feature-item symbol-link  hvr-pulse hvr-grow-shadow"><i class="fas fa-video"></i></span>
+          <span class="feature-item symbol-link  hvr-pulse hvr-grow-shadow"><i class="fas fa-phone"></i></span>
+          <span class="feature-item symbol-link  hvr-pulse hvr-grow-shadow"><i class="fas fa-user-plus"></i></span>
+        </span>
+    </div>
+    <div class="content-message-container p-3">
+      <div class="info-detail-message row" *ngFor="let infoMessage of listMessageByChannel">
+        <div class="avatar col-sm-1">
+          <img class="img-fluid round rounded" src="../public/images/girl.jpg" alt="avatar-user">
+        </div>
+        <div class="message col-sm-10">
+          <div class="info-message">
+            <div class="extra-info small">
+              <span class="username">{{infoMessage.username}}</span> <span class="message-time-sent">3:59 PM</span>
+            </div>
+            <div class="content-message">
+              <span class="text bg-info">{{infoMessage.message}}</span>
+              <span class="emotion hvr-bounce-in"><i class="far fa-smile"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
+    <div class="send-message-box">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="input-group col-sm-10">
+          <input type="text" class="form-control" placeholder="Send message" [(ngModel)]="inputValue">
+          <div class="input-group-append">
+            <span class="input-group-text symbol-link hvr-grow"><i class="far fa-file-image"></i></span>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text symbol-link hvr-grow"><i class="fas fa-file-video"></i></span>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text symbol-link hvr-grow"><i class="emotion far fa-smile"></i></span>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text symbol-link hvr-grow"><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text symbol-link hvr-grow"><i class="fas fa-file-video"></i></span>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text symbol-link hvr-grow"><i class="far fa-thumbs-up"></i></span>
+          </div>
+          <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

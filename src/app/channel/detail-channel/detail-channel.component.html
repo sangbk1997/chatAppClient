@@ -1,0 +1,31 @@
+
+<div id="channelId" class="modal">
+  <span onclick="document.getElementById('channelId').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content">
+    <div class="container">
+      <h1>Thông tin Channel</h1>
+      <hr>
+      <label *ngIf="isUpdate"><b>Id channel</b></label>
+      <input *ngIf="isUpdate" type="text" name="id" [(ngModel)]="channel.id" disabled>
+
+      <label><b>Tên channel</b></label>
+      <input type="text" name="title" [(ngModel)]="channel.title">
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('channelId').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn" (click)="saveChannel()">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById('channelId');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>

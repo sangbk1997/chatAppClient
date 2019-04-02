@@ -1,0 +1,18 @@
+ div.messages{
+   width: 80%;
+   margin: auto;
+   height: 500px;
+   background-color: aliceblue;
+   border: 1px solid #4CAF50;
+   border-radius: 5px;
+ }
+
+ span{
+   font-weight: bold;
+   color: blue;
+ }
+
+ div.content{
+   text-align: left;
+ }
+

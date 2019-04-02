@@ -1,0 +1,23 @@
+<div class="viewChannels">
+  <h3>View Channel</h3>
+  <hr>
+  <div class="channels">
+    <span class="channel" *ngFor="let channel of listChannel">
+      <div class="title">
+        <h4 class="link" (click)="changeChannel(channel)">{{channel.title}}</h4>
+      </div>
+      <div class="feature">
+        <button [ngStyle]="{'background-color': 'blue', 'cursor': 'pointer'}" (click)="viewDetail(channel)">
+          Xem chi tiêt
+        </button>
+        <button [ngStyle]="{'background-color': 'red', 'cursor': 'pointer'}" (click)="deleteChannel(channel)">
+          Xóa
+        </button>
+      </div>
+    </span>
+  </div>
+  <div class="view-channel-detail clearfix">
+    <app-view-detail-channel [channel]="channelSelected" (saveChannelInfo)="getListChannel()"></app-view-detail-channel>
+  </div>
+  <button (click)="addChannel()">Add channel</button>
+</div>
